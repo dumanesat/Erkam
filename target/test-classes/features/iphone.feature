@@ -1,6 +1,6 @@
 Feature: Search cheapest Iphone
 
-
+  @wip
   Scenario: User should be able to find cheapest Iphone model
     Given User is on search page
     When User enters Iphone model with storage "iphone 11 256 gb unlocked"
@@ -16,7 +16,7 @@ Feature: Search cheapest Iphone
     And User clicks condition check box "Galaxy S21 Plus 5G"
     And User click storage check box "256 GB"
     And User inconsistent prices according to condition..
-  @wip
+
   Scenario: Apple watch
     Given User is on search page
     When User enters Iphone model with storage "Apple Watch Series 8"

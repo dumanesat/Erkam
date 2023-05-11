@@ -94,7 +94,7 @@ String cond;
             newUnlocked.get(i).shouldBe(visible, enabled, exist);
             newUnlocked.get(i).hover();
             newUnlocked.get(i).click();
-            $x("//span[normalize-space(text())='Condition']").shouldBe(visible);
+            $x("//p[normalize-space(text())='Condition']").shouldBe(visible);
             Double fair;
             Double good;
             Double excellent;
