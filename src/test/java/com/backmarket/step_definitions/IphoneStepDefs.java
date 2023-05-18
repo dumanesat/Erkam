@@ -159,7 +159,7 @@ String cond;
             newUnlocked.get(i).shouldBe(visible, enabled, exist);
             newUnlocked.get(i).hover();
             newUnlocked.get(i).click();
-            //$x("//p[normalize-space(text())='Condition']").shouldBe(visible);
+            $x("//p[normalize-space(text())='Condition']").shouldBe(visible);
             Double fair;
             Double good;
             Double excellent;
@@ -212,8 +212,9 @@ String cond;
             // webdriver().driver().getWebDriver().navigate().back();
            // open(url);
             Selenide.back();
-            if(!searchPage.modelCheckBox(model).isSelected()){
-                searchPage.modelCheckBox(model).hover().click();
+            $x("//h3[@data-selector='total-products']").shouldBe(visible);
+           // if(!searchPage.modelCheckBox(model).isSelected()){
+             //   searchPage.modelCheckBox(model).hover().click();
             }
 
         //    if (!searchPage.conditionCheckBox(cond).isSelected()){
@@ -221,7 +222,7 @@ String cond;
            // }
 
 
-        }
+
         Collections.sort(fairPriceList);
         Collections.sort(goodPriceList);
         Collections.sort(excellentPriceList);
