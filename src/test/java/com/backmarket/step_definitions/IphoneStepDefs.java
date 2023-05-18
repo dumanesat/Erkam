@@ -91,7 +91,7 @@ String cond;
                 goodPriceList.add(good);
                 excellentPriceList.add(excellent);
 
-            } else if (searchPage.conditionsPrice.size() == 2 && searchPage.coditionsName.get(0).getText().contains("Fair") && searchPage.coditionsName.get(1).getText().contains("Good")) {
+            } else if (searchPage.conditionsPrice.size() == 2 && (searchPage.coditionsName.get(0).getText().contains("Fair") && searchPage.coditionsName.get(1).getText().contains("Good"))) {
 
 
                 Double prices[] = {Double.parseDouble(searchPage.conditionsPrice.get(0).getText().replace(",", "").substring(1)), Double.parseDouble(searchPage.conditionsPrice.get(1).getText().replace(",", "").substring(1))};
@@ -100,7 +100,7 @@ String cond;
                 good = prices[1];
                 fairPriceList.add(fair);
                 goodPriceList.add(good);
-            } else if (searchPage.conditionsPrice.size() == 2 && searchPage.coditionsName.get(0).getText().contains("Fair") && searchPage.coditionsName.get(1).getText().contains("Excellent")) {
+            } else if (searchPage.conditionsPrice.size() == 2 && (searchPage.coditionsName.get(0).getText().contains("Fair") && searchPage.coditionsName.get(1).getText().contains("Excellent"))){
                 Double prices[] = {Double.parseDouble(searchPage.conditionsPrice.get(0).getText().replace(",", "").substring(1)), Double.parseDouble(searchPage.conditionsPrice.get(1).getText().replace(",", "").substring(1))};
                 Arrays.sort(prices);
                 fair = prices[0];
@@ -108,7 +108,7 @@ String cond;
                 fairPriceList.add(fair);
                 excellentPriceList.add(excellent);
 
-            } else if (searchPage.conditionsPrice.size() == 2 && searchPage.coditionsName.get(0).getText().contains("Good") && searchPage.coditionsName.get(1).getText().contains("Excellent")) {
+            } else if (searchPage.conditionsPrice.size() == 2 && (searchPage.coditionsName.get(0).getText().contains("Good") && searchPage.coditionsName.get(1).getText().contains("Excellent"))) {
                 Double prices[] = {Double.parseDouble(searchPage.conditionsPrice.get(0).getText().replace(",", "").substring(1)), Double.parseDouble(searchPage.conditionsPrice.get(1).getText().replace(",", "").replace(",", "").substring(1))};
                 Arrays.sort(prices);
                 good = prices[0];
