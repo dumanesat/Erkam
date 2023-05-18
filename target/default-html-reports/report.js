@@ -65,10 +65,8 @@ formatter.match({
   "location": "com.backmarket.step_definitions.IphoneStepDefs.user_eliminates_inconsistent_prices_according_to_condition()"
 });
 formatter.result({
-  "error_message": "java.util.NoSuchElementException\n\tat java.base/java.util.ArrayList$Itr.next(ArrayList.java:1000)\n\tat java.base/java.util.Collections.min(Collections.java:601)\n\tat com.backmarket.step_definitions.IphoneStepDefs.user_eliminates_inconsistent_prices_according_to_condition(IphoneStepDefs.java:158)\n\tat ✽.User inconsistent prices according to condition(file:///Users/sule/IdeaProjects/Erkam/src/test/resources/features/iphone.feature:10)\n",
-  "status": "failed"
+  "status": "passed"
 });
-formatter.embedding("image/png", "embedded0.png", "screenshot");
 formatter.after({
   "status": "passed"
 });

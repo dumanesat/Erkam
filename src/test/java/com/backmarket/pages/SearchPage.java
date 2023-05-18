@@ -17,7 +17,8 @@ public class SearchPage {
 
     public SelenideElement searchLink = $x("//a[@class='!w-full _1xMx-RYw _3jgXaWY4']");
 
-    public ElementsCollection conditionsPrice = $$x("//li[@data-qa='grade-0']/../li/a/div/div[2]");
+  //  public ElementsCollection conditionsPrice = $$x("//li[@data-qa='grade-0']/../li/a/div/div[2]");
+    public ElementsCollection conditionsPrice = $$x("(//ul[@class='grid gap-2 list-none grid-cols-3'])[1]/li/a/div/div[2]");
 
     public SelenideElement modelCheckBox(String model){
         return $x("//span[normalize-space(text())='"+model+"']");
@@ -36,4 +37,7 @@ public class SearchPage {
     public ElementsCollection returnCellular(String wifiOrCellular){
         return $$x("//div[@class='flex flex-col md:flex-1 md:justify-end']/span[1][contains(text(),'"+wifiOrCellular+"')] | //div[@class='flex flex-col md:flex-1 md:justify-end']/h2[contains(text(),'\"+wifiOrCellular+\"')]");
     }
+    public SelenideElement outOfStock=$x("//div[@data-test='out-of-stock-product-desktop-warning-message']/div/div");
+    public ElementsCollection coditionsName=$$x("//div[@data-test='new-pickers']/div/div[2]/ul/li/a/div/div/span");
+    public SelenideElement condition=$x("//p[normalize-space(text())='Condition']");
 }

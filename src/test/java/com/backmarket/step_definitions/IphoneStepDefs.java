@@ -1,31 +1,13 @@
 package com.backmarket.step_definitions;
-
 import com.backmarket.pages.MainPage;
 import com.backmarket.pages.SearchPage;
-import com.backmarket.utlities.BrowserUtils;
 import com.backmarket.utlities.ConfigurationReader;
-import com.backmarket.utlities.Driver;
-import com.codeborne.selenide.Condition;
-import com.codeborne.selenide.WebDriverRunner;
 import io.cucumber.java.en.*;
-import org.apache.commons.lang.ArrayUtils;
-import org.openqa.selenium.By;
-import org.openqa.selenium.Keys;
-import org.openqa.selenium.WebElement;
-
-import java.time.Duration;
 import java.util.*;
-import java.util.stream.Collectors;
-
 import com.codeborne.selenide.Selenide;
 import com.codeborne.selenide.SelenideElement;
-import org.openqa.selenium.support.ui.ExpectedConditions;
-import org.openqa.selenium.support.ui.WebDriverWait;
-
 import java.util.ArrayList;
 import java.util.List;
-import java.util.stream.Collectors;
-
 import static com.codeborne.selenide.Condition.*;
 import static com.codeborne.selenide.Selenide.*;
 
@@ -94,7 +76,8 @@ String cond;
             newUnlocked.get(i).shouldBe(visible, enabled, exist);
             newUnlocked.get(i).hover();
             newUnlocked.get(i).click();
-            $x("//p[normalize-space(text())='Condition']").shouldBe(visible);
+
+         searchPage.condition.shouldBe(visible);
             Double fair;
             Double good;
             Double excellent;
@@ -108,7 +91,7 @@ String cond;
                 goodPriceList.add(good);
                 excellentPriceList.add(excellent);
 
-            } else if (searchPage.conditionsPrice.size() == 2 && $$x("//li[@data-qa='grade-0']/../li/a/div/div[1]").get(0).getText().contains("Fair") && $$x("//li[@data-qa='grade-0']/../li/a/div/div[1]").get(1).getText().contains("Good")) {
+            } else if (searchPage.conditionsPrice.size() == 2 && searchPage.coditionsName.get(0).getText().contains("Fair") && searchPage.coditionsName.get(1).getText().contains("Good")) {
 
 
                 Double prices[] = {Double.parseDouble(searchPage.conditionsPrice.get(0).getText().replace(",", "").substring(1)), Double.parseDouble(searchPage.conditionsPrice.get(1).getText().replace(",", "").substring(1))};
@@ -117,7 +100,7 @@ String cond;
                 good = prices[1];
                 fairPriceList.add(fair);
                 goodPriceList.add(good);
-            } else if (searchPage.conditionsPrice.size() == 2 && $$x("//li[@data-qa='grade-0']/../li/a/div/div[1]").get(0).getText().contains("Fair") && $$x("//li[@data-qa='grade-0']/../li/a/div/div[1]").get(1).getText().contains("Excellent")) {
+            } else if (searchPage.conditionsPrice.size() == 2 && searchPage.coditionsName.get(0).getText().contains("Fair") && searchPage.coditionsName.get(1).getText().contains("Excellent")) {
                 Double prices[] = {Double.parseDouble(searchPage.conditionsPrice.get(0).getText().replace(",", "").substring(1)), Double.parseDouble(searchPage.conditionsPrice.get(1).getText().replace(",", "").substring(1))};
                 Arrays.sort(prices);
                 fair = prices[0];
@@ -125,28 +108,29 @@ String cond;
                 fairPriceList.add(fair);
                 excellentPriceList.add(excellent);
 
-            } else if (searchPage.conditionsPrice.size() == 2 && $$x("//li[@data-qa='grade-0']/../li/a/div/div[1]").get(0).getText().contains("Good") && $$x("//li[@data-qa='grade-0']/../li/a/div/div[1]").get(1).getText().contains("Excellent")) {
+            } else if (searchPage.conditionsPrice.size() == 2 && searchPage.coditionsName.get(0).getText().contains("Good") && searchPage.coditionsName.get(1).getText().contains("Excellent")) {
                 Double prices[] = {Double.parseDouble(searchPage.conditionsPrice.get(0).getText().replace(",", "").substring(1)), Double.parseDouble(searchPage.conditionsPrice.get(1).getText().replace(",", "").replace(",", "").substring(1))};
                 Arrays.sort(prices);
                 good = prices[0];
                 excellent = prices[1];
                 goodPriceList.add(good);
                 excellentPriceList.add(excellent);
-            } else if (searchPage.conditionsPrice.size() == 1 && $$x("//li[@data-qa='grade-0']/../li/a/div/div[1]").get(0).getText().contains("Excellent")) {
+            } else if (searchPage.conditionsPrice.size() == 1 && searchPage.coditionsName.get(0).getText().contains("Excellent")) {
                 excellent = Double.parseDouble(searchPage.conditionsPrice.get(0).getText().replace(",", "").substring(1));
                 excellentPriceList.add(excellent);
-            } else if (searchPage.conditionsPrice.size() == 1 && $$x("//li[@data-qa='grade-0']/../li/a/div/div[1]").get(0).getText().contains("Good")) {
+            } else if (searchPage.conditionsPrice.size() == 1 && searchPage.coditionsName.get(0).getText().contains("Good")) {
                 good = Double.parseDouble(searchPage.conditionsPrice.get(0).getText().replace(",", "").substring(1));
                 goodPriceList.add(good);
-            } else if (searchPage.conditionsPrice.size() == 1 && $$x("//li[@data-qa='grade-0']/../li/a/div/div[1]").get(0).getText().contains("Fair")) {
+            } else if (searchPage.conditionsPrice.size() == 1 && searchPage.coditionsName.get(0).getText().contains("Fair")) {
                 fair = Double.parseDouble(searchPage.conditionsPrice.get(0).getText().replace(",", "").substring(1));
                 fairPriceList.add(fair);
             } else {
                 continue;
             }
-           // webdriver().driver().getWebDriver().navigate().back();
+            //webdriver().driver().getWebDriver().navigate().back();
             //open(url);
-            Selenide.back();
+          Selenide.back();
+          $x("//h3[@data-selector='total-products']").shouldBe(visible);
 
         }
         Collections.sort(fairPriceList);
@@ -175,7 +159,7 @@ String cond;
             newUnlocked.get(i).shouldBe(visible, enabled, exist);
             newUnlocked.get(i).hover();
             newUnlocked.get(i).click();
-            $x("//span[normalize-space(text())='Condition']").shouldBe(visible);
+            //$x("//p[normalize-space(text())='Condition']").shouldBe(visible);
             Double fair;
             Double good;
             Double excellent;
@@ -189,7 +173,7 @@ String cond;
                 goodPriceList.add(good);
                 excellentPriceList.add(excellent);
 
-            } else if (searchPage.conditionsPrice.size() == 2 && $$x("//li[@data-qa='grade-0']/../li/a/div/div[1]").get(0).getText().contains("Fair") && $$x("//li[@data-qa='grade-0']/../li/a/div/div[1]").get(1).getText().contains("Good")) {
+            } else if (searchPage.conditionsPrice.size() == 2 && searchPage.coditionsName.get(0).getText().contains("Fair") && searchPage.coditionsName.get(1).getText().contains("Good")) {
 
 
                 Double prices[] = {Double.parseDouble(searchPage.conditionsPrice.get(0).getText().replace(",", "").substring(1)), Double.parseDouble(searchPage.conditionsPrice.get(1).getText().replace(",", "").substring(1))};
@@ -198,7 +182,7 @@ String cond;
                 good = prices[1];
                 fairPriceList.add(fair);
                 goodPriceList.add(good);
-            } else if (searchPage.conditionsPrice.size() == 2 && $$x("//li[@data-qa='grade-0']/../li/a/div/div[1]").get(0).getText().contains("Fair") && $$x("//li[@data-qa='grade-0']/../li/a/div/div[1]").get(1).getText().contains("Excellent")) {
+            } else if (searchPage.conditionsPrice.size() == 2 && searchPage.coditionsName.get(0).getText().contains("Fair") && searchPage.coditionsName.get(1).getText().contains("Excellent")) {
                 Double prices[] = {Double.parseDouble(searchPage.conditionsPrice.get(0).getText().replace(",", "").substring(1)), Double.parseDouble(searchPage.conditionsPrice.get(1).getText().replace(",", "").substring(1))};
                 Arrays.sort(prices);
                 fair = prices[0];
@@ -206,28 +190,28 @@ String cond;
                 fairPriceList.add(fair);
                 excellentPriceList.add(excellent);
 
-            } else if (searchPage.conditionsPrice.size() == 2 && $$x("//li[@data-qa='grade-0']/../li/a/div/div[1]").get(0).getText().contains("Good") && $$x("//li[@data-qa='grade-0']/../li/a/div/div[1]").get(1).getText().contains("Excellent")) {
+            } else if (searchPage.conditionsPrice.size() == 2 && searchPage.coditionsName.get(0).getText().contains("Good") && searchPage.coditionsName.get(1).getText().contains("Excellent")) {
                 Double prices[] = {Double.parseDouble(searchPage.conditionsPrice.get(0).getText().replace(",", "").substring(1)), Double.parseDouble(searchPage.conditionsPrice.get(1).getText().replace(",", "").replace(",", "").substring(1))};
                 Arrays.sort(prices);
                 good = prices[0];
                 excellent = prices[1];
                 goodPriceList.add(good);
                 excellentPriceList.add(excellent);
-            } else if (searchPage.conditionsPrice.size() == 1 && $$x("//li[@data-qa='grade-0']/../li/a/div/div[1]").get(0).getText().contains("Excellent")) {
+            } else if (searchPage.conditionsPrice.size() == 1 && searchPage.coditionsName.get(0).getText().contains("Excellent")) {
                 excellent = Double.parseDouble(searchPage.conditionsPrice.get(0).getText().replace(",", "").substring(1));
                 excellentPriceList.add(excellent);
-            } else if (searchPage.conditionsPrice.size() == 1 && $$x("//li[@data-qa='grade-0']/../li/a/div/div[1]").get(0).getText().contains("Good")) {
+            } else if (searchPage.conditionsPrice.size() == 1 && searchPage.coditionsName.get(0).getText().contains("Good")) {
                 good = Double.parseDouble(searchPage.conditionsPrice.get(0).getText().replace(",", "").substring(1));
                 goodPriceList.add(good);
-            } else if (searchPage.conditionsPrice.size() == 1 && $$x("//li[@data-qa='grade-0']/../li/a/div/div[1]").get(0).getText().contains("Fair")) {
+            } else if (searchPage.conditionsPrice.size() == 1 && searchPage.coditionsName.get(0).getText().contains("Fair")) {
                 fair = Double.parseDouble(searchPage.conditionsPrice.get(0).getText().replace(",", "").substring(1));
                 fairPriceList.add(fair);
             } else {
                 continue;
             }
             // webdriver().driver().getWebDriver().navigate().back();
-            open(url);
-           // Selenide.back();
+           // open(url);
+            Selenide.back();
             if(!searchPage.modelCheckBox(model).isSelected()){
                 searchPage.modelCheckBox(model).hover().click();
             }
@@ -284,7 +268,7 @@ String cond;
                 goodPriceList.add(good);
                 excellentPriceList.add(excellent);
 
-            } else if (searchPage.conditionsPrice.size() == 2 && $$x("//li[@data-qa='grade-0']/../li/a/div/div[1]").get(0).getText().contains("Fair") && $$x("//li[@data-qa='grade-0']/../li/a/div/div[1]").get(1).getText().contains("Good")) {
+            } else if (searchPage.conditionsPrice.size() == 2 && searchPage.coditionsName.get(0).getText().contains("Fair") && searchPage.coditionsName.get(1).getText().contains("Good")) {
 
 
                 Double prices[] = {Double.parseDouble(searchPage.conditionsPrice.get(0).getText().replace(",", "").substring(1)), Double.parseDouble(searchPage.conditionsPrice.get(1).getText().replace(",", "").substring(1))};
@@ -293,7 +277,7 @@ String cond;
                 good = prices[1];
                 fairPriceList.add(fair);
                 goodPriceList.add(good);
-            } else if (searchPage.conditionsPrice.size() == 2 && $$x("//li[@data-qa='grade-0']/../li/a/div/div[1]").get(0).getText().contains("Fair") && $$x("//li[@data-qa='grade-0']/../li/a/div/div[1]").get(1).getText().contains("Excellent")) {
+            } else if (searchPage.conditionsPrice.size() == 2 && searchPage.coditionsName.get(0).getText().contains("Fair") && searchPage.coditionsName.get(1).getText().contains("Excellent")) {
                 Double prices[] = {Double.parseDouble(searchPage.conditionsPrice.get(0).getText().replace(",", "").substring(1)), Double.parseDouble(searchPage.conditionsPrice.get(1).getText().replace(",", "").substring(1))};
                 Arrays.sort(prices);
                 fair = prices[0];
@@ -301,20 +285,20 @@ String cond;
                 fairPriceList.add(fair);
                 excellentPriceList.add(excellent);
 
-            } else if (searchPage.conditionsPrice.size() == 2 && $$x("//li[@data-qa='grade-0']/../li/a/div/div[1]").get(0).getText().contains("Good") && $$x("//li[@data-qa='grade-0']/../li/a/div/div[1]").get(1).getText().contains("Excellent")) {
+            } else if (searchPage.conditionsPrice.size() == 2 && searchPage.coditionsName.get(0).getText().contains("Good") && searchPage.coditionsName.get(1).getText().contains("Excellent")) {
                 Double prices[] = {Double.parseDouble(searchPage.conditionsPrice.get(0).getText().replace(",", "").substring(1)), Double.parseDouble(searchPage.conditionsPrice.get(1).getText().replace(",", "").replace(",", "").substring(1))};
                 Arrays.sort(prices);
                 good = prices[0];
                 excellent = prices[1];
                 goodPriceList.add(good);
                 excellentPriceList.add(excellent);
-            } else if (searchPage.conditionsPrice.size() == 1 && $$x("//li[@data-qa='grade-0']/../li/a/div/div[1]").get(0).getText().contains("Excellent")) {
+            } else if (searchPage.conditionsPrice.size() == 1 && searchPage.coditionsName.get(0).getText().contains("Excellent")) {
                 excellent = Double.parseDouble(searchPage.conditionsPrice.get(0).getText().replace(",", "").substring(1));
                 excellentPriceList.add(excellent);
-            } else if (searchPage.conditionsPrice.size() == 1 && $$x("//li[@data-qa='grade-0']/../li/a/div/div[1]").get(0).getText().contains("Good")) {
+            } else if (searchPage.conditionsPrice.size() == 1 && searchPage.coditionsName.get(0).getText().contains("Good")) {
                 good = Double.parseDouble(searchPage.conditionsPrice.get(0).getText().replace(",", "").substring(1));
                 goodPriceList.add(good);
-            } else if (searchPage.conditionsPrice.size() == 1 && $$x("//li[@data-qa='grade-0']/../li/a/div/div[1]").get(0).getText().contains("Fair")) {
+            } else if (searchPage.conditionsPrice.size() == 1 && searchPage.coditionsName.get(0).getText().contains("Fair")) {
                 fair = Double.parseDouble(searchPage.conditionsPrice.get(0).getText().replace(",", "").substring(1));
                 fairPriceList.add(fair);
             } else {
