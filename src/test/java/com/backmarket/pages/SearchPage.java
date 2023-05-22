@@ -35,9 +35,10 @@ public class SearchPage {
    // public ElementsCollection unlockedPhoneList=$$x("//div[@class='flex flex-col md:flex-1 md:justify-end']/span[1][contains(text(),'Unlocked')]/../../../..");
     public ElementsCollection unlockedPhoneList=$$x("//div[@class='flex flex-col md:flex-1 md:justify-end']/span[1][contains(text(),'Unlocked')] | //div[@class='flex flex-col md:flex-1 md:justify-end']/h2[contains(text(),'Unlocked')]");
     public ElementsCollection returnCellular(String wifiOrCellular){
-        return $$x("//div[@class='flex flex-col md:flex-1 md:justify-end']/span[1][contains(text(),'"+wifiOrCellular+"')] | //div[@class='flex flex-col md:flex-1 md:justify-end']/h2[contains(text(),'\"+wifiOrCellular+\"')]");
+        return $$x("//h2[contains(text(),'"+wifiOrCellular+"')]");
     }
     public SelenideElement outOfStock=$x("//div[@data-test='out-of-stock-product-desktop-warning-message']/div/div");
     public ElementsCollection coditionsName=$$x("(//ul[@class='grid gap-2 list-none grid-cols-3'])[1]/li/a/div/div/span");
     public SelenideElement condition=$x("//p[normalize-space(text())='Condition']");
+
 }

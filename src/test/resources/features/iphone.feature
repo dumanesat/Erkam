@@ -7,7 +7,7 @@ Feature: Search cheapest Iphone
   #  And User clicks condition check box "Good"
     And User click storage check box "64 GB"
     And User inconsistent prices according to condition
-  @wip
+
   Scenario: User should be able to find cheapest Samsung model
     Given User is on search page
     When User enters Iphone model with storage "Samsung galaxy s21 Plus 5g 256 gb unlocked"
@@ -15,11 +15,11 @@ Feature: Search cheapest Iphone
     And User clicks condition check box "Galaxy S21 Plus 5G"
     And User click storage check box "256 GB"
     And User inconsistent prices according to condition..
-
+  @wip
   Scenario: Apple watch
     Given User is on search page
-    When User enters Iphone model with storage "Apple Watch Series 8"
+    When User enters Iphone model with storage "apple watch series 8 cellular"
     And User click model checkboxes "Apple Watch Series 8"
    # And User clicks condition check box "Galaxy S21 Plus 5G"
-    And User click storage check box "256 GB".
-    And User inconsistent prices according to "cellular"
+    And User click storage check box "32 GB".
+    And User inconsistent prices according to "Cellular"

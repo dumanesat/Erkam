@@ -239,7 +239,7 @@ String cond;
     public void userClickStorageCheckBox(String arg0) {
         searchPage.storageCheckBox(arg0).hover().click();
 
-        System.out.println(url);
+
     }
 
     @And("User inconsistent prices according to {string}")
@@ -255,7 +255,8 @@ String cond;
             newUnlocked.get(i).shouldBe(visible, enabled, exist);
             newUnlocked.get(i).hover();
             newUnlocked.get(i).click();
-            $x("//span[normalize-space(text())='Condition']").shouldBe(visible);
+            searchPage.condition.shouldBe(visible);
+
             Double fair;
             Double good;
             Double excellent;
@@ -306,8 +307,8 @@ String cond;
                 continue;
             }
             // webdriver().driver().getWebDriver().navigate().back();
-            open(url);
-            // Selenide.back();
+            //open(url);
+             Selenide.back();
 
             //    if (!searchPage.conditionCheckBox(cond).isSelected()){
             //     searchPage.conditionCheckBox(cond).hover().click();
