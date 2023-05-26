@@ -19,9 +19,10 @@ public class IphoneStepDefs {
     public void user_is_on_search_page() {
         open(ConfigurationReader.get("url"));
         mainPage.searchBar.waitUntil(visible, 10000);
-        mainPage.acceptCookies.hover().click();
+        if (mainPage.acceptCookies.isDisplayed()) {
+            mainPage.acceptCookies.hover().click();
+        }
     }
-
 
 
     @When("User enters Iphone model with storage {string}")
