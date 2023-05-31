@@ -24,20 +24,20 @@ public class IphoneStepDefs {
         }
     }
 
-
+String model1;
     @When("User enters Iphone model with storage {string}")
-    public void user_enters_Iphone_model_with_storage(String string) throws InterruptedException {
-
-        mainPage.searchBar.setValue(string).pressEnter();
+    public void user_enters_Iphone_model_with_storage(String model) throws InterruptedException {
+        this.model1=model;
+        mainPage.searchBar.setValue(model).pressEnter();
         searchPage.phoneList.get(searchPage.phoneList.size() - 1);
 
 
     }
 
-String model;
+
     @When("User click model checkboxes {string}")
     public void user_click_model_checkboxes(String string) {
-        model=string;
+
         searchPage.modelCheckBox(string).hover().click();
     }
 String cond;
@@ -137,12 +137,12 @@ String cond;
         Collections.sort(fairPriceList);
         Collections.sort(goodPriceList);
         Collections.sort(excellentPriceList);
-        System.out.println("fair = " + fairPriceList);
-        System.out.println("good = " + goodPriceList);
-        System.out.println("excellent = " + excellentPriceList);
-        System.out.println("The cheapest fair = " + Collections.min(fairPriceList));
-        System.out.println("The cheapest good " + Collections.min(goodPriceList));
-        System.out.println("The cheapest excellent " + Collections.min(excellentPriceList));
+        System.out.println(model1+" fair = " + fairPriceList);
+        System.out.println(model1+" good = " + goodPriceList);
+        System.out.println(model1+" excellent = " + excellentPriceList);
+        System.out.println(model1+ " The cheapest fair = " + Collections.min(fairPriceList));
+        System.out.println(model1+" The cheapest good " + Collections.min(goodPriceList));
+        System.out.println(model1+" The cheapest excellent " + Collections.min(excellentPriceList));
     }
 
 
