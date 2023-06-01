@@ -2,6 +2,8 @@ package com.backmarket.step_definitions;
 import com.backmarket.pages.MainPage;
 import com.backmarket.pages.SearchPage;
 import com.backmarket.utlities.ConfigurationReader;
+import com.codeborne.selenide.Condition;
+import com.codeborne.selenide.ElementsCollection;
 import io.cucumber.java.en.*;
 import java.util.*;
 import com.codeborne.selenide.Selenide;
@@ -79,9 +81,18 @@ String cond;
             newUnlocked.get(i).click();
 
          searchPage.condition.shouldBe(visible);
+
             Double fair;
             Double good;
             Double excellent;
+           try {
+               searchPage.conditionsPrice.get(0).shouldBe(visible);
+               searchPage.conditionsPrice.get(1).shouldBe(visible);
+               searchPage.conditionsPrice.get(2).shouldBe(visible);
+           }catch (Exception e){
+               e.getMessage();
+           }
+
             if (searchPage.conditionsPrice.size() == 3) {
                 Double prices[] = {Double.parseDouble(searchPage.conditionsPrice.get(2).getText().replace(",", "").substring(1)), Double.parseDouble(searchPage.conditionsPrice.get(0).getText().replace(",", "").substring(1)), Double.parseDouble(searchPage.conditionsPrice.get(1).getText().replace(",", "").substring(1))};
                 Arrays.sort(prices);
