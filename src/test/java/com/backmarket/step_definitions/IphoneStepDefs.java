@@ -42,24 +42,31 @@ String model1;
 
         searchPage.modelCheckBox(string).hover().click();
     }
-String cond;
+
     @When("User clicks condition check box {string}")
     public void user_clicks_condition_check_box(String string) {
-
-        cond=string;
-
         //searchPage.conditionCheckBox(string).shouldBe(exist);
-        searchPage.conditionCheckBox(string).shouldBe(exist).hover().click();
+        if (searchPage.filterModel.isDisplayed()) {
+            searchPage.filterModel.shouldBe(visible).hover().sendKeys(string);
+            searchPage.conditionCheckBox(string).shouldBe(exist).hover().click();
+        } else {
+            searchPage.conditionCheckBox(string).shouldBe(exist).hover().click();
+        }
     }
-
     String url;
 
     @When("User click storage check box {string}")
     public void user_click_storage_check_box(String string) {
-        searchPage.storageCheckBox(string).hover().click();
-        searchPage.unlockedPhoneList.get(0).shouldBe(exist);
-        url = Selenide.webdriver().driver().url();
-        System.out.println(url);
+        if(searchPage.filterStorage.isDisplayed()){
+            searchPage.filterStorage.hover().sendKeys(string);
+            searchPage.storageCheckBox(string).shouldBe(visible).hover().click();
+        }else {
+            System.out.println("searchPage.storageCheckBox(string).isDisplayed() = " + searchPage.storageCheckBox(string).isDisplayed());
+            searchPage.storageCheckBox(string).hover().click();
+            searchPage.unlockedPhoneList.get(0).shouldBe(exist);
+            url = Selenide.webdriver().driver().url();
+        }
+
     }
 
 
@@ -73,26 +80,16 @@ String cond;
         List<Double> excellentPriceList = new ArrayList<>();
         Thread.sleep(500);
         List<SelenideElement> newUnlocked = searchPage.unlockedPhoneList;
-        System.out.println("newUnlocked.size() = " + newUnlocked.size());
+        //System.out.println("newUnlocked.size() = " + newUnlocked.size());
         for (int i = 0; i < newUnlocked.size(); i++) {
             newUnlocked = searchPage.unlockedPhoneList;
             newUnlocked.get(i).shouldBe(visible, enabled, exist);
             newUnlocked.get(i).hover();
             newUnlocked.get(i).click();
-
          searchPage.condition.shouldBe(visible);
-
             Double fair;
             Double good;
             Double excellent;
-           try {
-               searchPage.conditionsPrice.get(0).shouldBe(visible);
-               searchPage.conditionsPrice.get(1).shouldBe(visible);
-               searchPage.conditionsPrice.get(2).shouldBe(visible);
-           }catch (Exception e){
-               e.getMessage();
-           }
-
             if (searchPage.conditionsPrice.size() == 3) {
                 Double prices[] = {Double.parseDouble(searchPage.conditionsPrice.get(2).getText().replace(",", "").substring(1)), Double.parseDouble(searchPage.conditionsPrice.get(0).getText().replace(",", "").substring(1)), Double.parseDouble(searchPage.conditionsPrice.get(1).getText().replace(",", "").substring(1))};
                 Arrays.sort(prices);
@@ -119,7 +116,6 @@ String cond;
                 excellent = prices[1];
                 fairPriceList.add(fair);
                 excellentPriceList.add(excellent);
-
             } else if (searchPage.conditionsPrice.size() == 2 && (searchPage.coditionsName.get(0).getText().contains("Good") && searchPage.coditionsName.get(1).getText().contains("Excellent"))) {
                 Double prices[] = {Double.parseDouble(searchPage.conditionsPrice.get(0).getText().replace(",", "").substring(1)), Double.parseDouble(searchPage.conditionsPrice.get(1).getText().replace(",", "").replace(",", "").substring(1))};
                 Arrays.sort(prices);
@@ -176,7 +172,7 @@ String cond;
             Double good;
             Double excellent;
             if (searchPage.conditionsPrice.size() == 3) {
-                Double prices[] = {Double.parseDouble(searchPage.conditionsPrice.get(2).getText().replace(",", "").substring(1)), Double.parseDouble(searchPage.conditionsPrice.get(0).getText().replace(",", "").substring(1)), Double.parseDouble(searchPage.conditionsPrice.get(1).getText().replace(",", "").substring(1))};
+                Double []prices = {Double.parseDouble(searchPage.conditionsPrice.get(2).getText().replace(",", "").substring(1)), Double.parseDouble(searchPage.conditionsPrice.get(0).getText().replace(",", "").substring(1)), Double.parseDouble(searchPage.conditionsPrice.get(1).getText().replace(",", "").substring(1))};
                 Arrays.sort(prices);
                 fair = prices[0];
                 good = prices[1];
@@ -188,14 +184,14 @@ String cond;
             } else if (searchPage.conditionsPrice.size() == 2 && searchPage.coditionsName.get(0).getText().contains("Fair") && searchPage.coditionsName.get(1).getText().contains("Good")) {
 
 
-                Double prices[] = {Double.parseDouble(searchPage.conditionsPrice.get(0).getText().replace(",", "").substring(1)), Double.parseDouble(searchPage.conditionsPrice.get(1).getText().replace(",", "").substring(1))};
+                Double[] prices = {Double.parseDouble(searchPage.conditionsPrice.get(0).getText().replace(",", "").substring(1)), Double.parseDouble(searchPage.conditionsPrice.get(1).getText().replace(",", "").substring(1))};
                 Arrays.sort(prices);
                 fair = prices[0];
                 good = prices[1];
                 fairPriceList.add(fair);
                 goodPriceList.add(good);
             } else if (searchPage.conditionsPrice.size() == 2 && searchPage.coditionsName.get(0).getText().contains("Fair") && searchPage.coditionsName.get(1).getText().contains("Excellent")) {
-                Double prices[] = {Double.parseDouble(searchPage.conditionsPrice.get(0).getText().replace(",", "").substring(1)), Double.parseDouble(searchPage.conditionsPrice.get(1).getText().replace(",", "").substring(1))};
+                Double[] prices = {Double.parseDouble(searchPage.conditionsPrice.get(0).getText().replace(",", "").substring(1)), Double.parseDouble(searchPage.conditionsPrice.get(1).getText().replace(",", "").substring(1))};
                 Arrays.sort(prices);
                 fair = prices[0];
                 excellent = prices[1];
@@ -203,7 +199,7 @@ String cond;
                 excellentPriceList.add(excellent);
 
             } else if (searchPage.conditionsPrice.size() == 2 && searchPage.coditionsName.get(0).getText().contains("Good") && searchPage.coditionsName.get(1).getText().contains("Excellent")) {
-                Double prices[] = {Double.parseDouble(searchPage.conditionsPrice.get(0).getText().replace(",", "").substring(1)), Double.parseDouble(searchPage.conditionsPrice.get(1).getText().replace(",", "").replace(",", "").substring(1))};
+                Double[] prices = {Double.parseDouble(searchPage.conditionsPrice.get(0).getText().replace(",", "").substring(1)), Double.parseDouble(searchPage.conditionsPrice.get(1).getText().replace(",", "").replace(",", "").substring(1))};
                 Arrays.sort(prices);
                 good = prices[0];
                 excellent = prices[1];
@@ -273,7 +269,7 @@ String cond;
             Double good;
             Double excellent;
             if (searchPage.conditionsPrice.size() == 3) {
-                Double prices[] = {Double.parseDouble(searchPage.conditionsPrice.get(2).getText().replace(",", "").substring(1)), Double.parseDouble(searchPage.conditionsPrice.get(0).getText().replace(",", "").substring(1)), Double.parseDouble(searchPage.conditionsPrice.get(1).getText().replace(",", "").substring(1))};
+                Double []prices = {Double.parseDouble(searchPage.conditionsPrice.get(2).getText().replace(",", "").substring(1)), Double.parseDouble(searchPage.conditionsPrice.get(0).getText().replace(",", "").substring(1)), Double.parseDouble(searchPage.conditionsPrice.get(1).getText().replace(",", "").substring(1))};
                 Arrays.sort(prices);
                 fair = prices[0];
                 good = prices[1];
@@ -285,14 +281,14 @@ String cond;
             } else if (searchPage.conditionsPrice.size() == 2 && searchPage.coditionsName.get(0).getText().contains("Fair") && searchPage.coditionsName.get(1).getText().contains("Good")) {
 
 
-                Double prices[] = {Double.parseDouble(searchPage.conditionsPrice.get(0).getText().replace(",", "").substring(1)), Double.parseDouble(searchPage.conditionsPrice.get(1).getText().replace(",", "").substring(1))};
+                Double []prices = {Double.parseDouble(searchPage.conditionsPrice.get(0).getText().replace(",", "").substring(1)), Double.parseDouble(searchPage.conditionsPrice.get(1).getText().replace(",", "").substring(1))};
                 Arrays.sort(prices);
                 fair = prices[0];
                 good = prices[1];
                 fairPriceList.add(fair);
                 goodPriceList.add(good);
             } else if (searchPage.conditionsPrice.size() == 2 && searchPage.coditionsName.get(0).getText().contains("Fair") && searchPage.coditionsName.get(1).getText().contains("Excellent")) {
-                Double prices[] = {Double.parseDouble(searchPage.conditionsPrice.get(0).getText().replace(",", "").substring(1)), Double.parseDouble(searchPage.conditionsPrice.get(1).getText().replace(",", "").substring(1))};
+                Double []prices = {Double.parseDouble(searchPage.conditionsPrice.get(0).getText().replace(",", "").substring(1)), Double.parseDouble(searchPage.conditionsPrice.get(1).getText().replace(",", "").substring(1))};
                 Arrays.sort(prices);
                 fair = prices[0];
                 excellent = prices[1];
@@ -300,7 +296,7 @@ String cond;
                 excellentPriceList.add(excellent);
 
             } else if (searchPage.conditionsPrice.size() == 2 && searchPage.coditionsName.get(0).getText().contains("Good") && searchPage.coditionsName.get(1).getText().contains("Excellent")) {
-                Double prices[] = {Double.parseDouble(searchPage.conditionsPrice.get(0).getText().replace(",", "").substring(1)), Double.parseDouble(searchPage.conditionsPrice.get(1).getText().replace(",", "").replace(",", "").substring(1))};
+                Double[] prices = {Double.parseDouble(searchPage.conditionsPrice.get(0).getText().replace(",", "").substring(1)), Double.parseDouble(searchPage.conditionsPrice.get(1).getText().replace(",", "").replace(",", "").substring(1))};
                 Arrays.sort(prices);
                 good = prices[0];
                 excellent = prices[1];

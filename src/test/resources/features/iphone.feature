@@ -1,6 +1,6 @@
 Feature: Search cheapest Iphone
 
-@wip
+
   Scenario: User should be able to find cheapest Iphone model
     Given User is on search page
     When User enters Iphone model with storage "iphone 12 64 gb unlocked"

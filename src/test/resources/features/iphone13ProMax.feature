@@ -13,4 +13,4 @@ Feature: Search cheapest all iphone 12 models
       | iphone 13 Pro Max 128 gb unlocked  | iPhone 13 Pro Max | 128 GB  |
       | iphone 13 Pro Max 256 gb unlocked  | iPhone 13 Pro Max | 256 GB  |
       | iphone 13 Pro Max 512 gb unlocked  | iPhone 13 Pro Max | 512 GB  |
-      | iphone 13 Pro Max 1024 gb unlocked | iPhone 13 Pro Max | 1024 GB |
+      | iphone 13 Pro Max 1000 gb unlocked | iPhone 13 Pro Max | 1000 GB |

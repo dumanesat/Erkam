@@ -40,5 +40,7 @@ public class SearchPage {
     public SelenideElement outOfStock=$x("//div[@data-test='out-of-stock-product-desktop-warning-message']/div/div");
     public ElementsCollection coditionsName=$$x("(//ul[@class='grid gap-2 list-none grid-cols-3'])[1]/li/a/div/div/span");
     public SelenideElement condition=$x("//p[normalize-space(text())='Condition']");
+    public SelenideElement filterStorage=$x("//input[@id='facet-filter-storage']");
+    public SelenideElement filterModel=$x("//input[@id='model']");
 
 }
