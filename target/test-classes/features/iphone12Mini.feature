@@ -1,6 +1,6 @@
 Feature: Search cheapest all iphone 12 models
 
-  Scenario Outline: iphone 12 mini
+  Scenario Outline: iphone 12 mini mini
     Given User is on search page
     When User enters Iphone model with storage "<model>"
     And User click model checkboxes "<model1>"

@@ -1,6 +1,6 @@
 Feature: Search cheapest all iphone 12 models
 
-@wip
+
   Scenario Outline: iphone 13 pro
     Given User is on search page
     When User enters Iphone model with storage "<model>"

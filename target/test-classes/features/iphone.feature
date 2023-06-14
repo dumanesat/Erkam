@@ -1,20 +1,20 @@
 Feature: Search cheapest Iphone
 
-@wip
+@wip1
   Scenario: User should be able to find cheapest Iphone model
     Given User is on search page
-    When User enters Iphone model with storage "iphone 12 64 gb unlocked"
+    When User enters Iphone model with storage "iphone 12 64 gb at&t"
     And User click model checkboxes "iPhone 12"
   #  And User clicks condition check box "Good"
     And User click storage check box "64 GB"
-    And User inconsistent prices according to condition
+    And User inconsistent prices according to condition "AT&T"
 
   Scenario: User should be able to find cheapest Samsung model
     Given User is on search page
-    When User enters Iphone model with storage "Samsung galaxy s21 Plus 5g 256 gb unlocked"
-    And User click model checkboxes "Galaxy S21+ 5G"
-    And User clicks condition check box "Galaxy S21 Plus 5G"
-    And User click storage check box "256 GB"
+    When User enters Iphone model with storage "Samsung Galaxy Z Fold 3 128GB unlocked"
+    And User click model checkboxes "Galaxy Z Fold 3"
+    #And User clicks condition check box "Galaxy S10+"
+    And User click storage check box "128 GB"
     And User inconsistent prices according to condition..
 
   Scenario: Apple watch
