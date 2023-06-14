@@ -33,7 +33,12 @@ public class SearchPage {
     }
 
    // public ElementsCollection unlockedPhoneList=$$x("//div[@class='flex flex-col md:flex-1 md:justify-end']/span[1][contains(text(),'Unlocked')]/../../../..");
-    public ElementsCollection unlockedPhoneList=$$x("//div[@class='flex flex-col md:flex-1 md:justify-end']/span[1][contains(text(),'Unlocked')] | //div[@class='flex flex-col md:flex-1 md:justify-end']/h2[contains(text(),'Unlocked')]");
+   //public ElementsCollection unlockedPhoneList=$$x("//div[@class='flex flex-col md:flex-1 md:justify-end']/span[1][contains(text(),'Unlocked')] | //div[@class='flex flex-col md:flex-1 md:justify-end']/h2[contains(text(),'Unlocked')]");
+public ElementsCollection phoneListCarrier(String carrier){
+        return $$x("//div[@class='flex flex-col md:flex-1 md:justify-end']/span[1][contains(text(),'"+carrier+"')] | //div[@class='flex flex-col md:flex-1 md:justify-end']/h2[contains(text(),'"+carrier+"')]");
+}
+   public ElementsCollection unlockedPhoneList=$$x("//div[@class='flex flex-col md:flex-1 md:justify-end']/h2[contains(.,'Unlock')]/../../../.. | //div[@class='flex flex-col md:flex-1 md:justify-end']/h2[contains(text(),'Unlocked')]");
+
     public ElementsCollection returnCellular(String wifiOrCellular){
         return $$x("//h2[contains(text(),'"+wifiOrCellular+"')]");
     }

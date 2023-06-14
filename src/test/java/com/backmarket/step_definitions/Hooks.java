@@ -23,12 +23,13 @@ public class Hooks {
         // System.out.println(System.getProperty("browser"));
         Configuration.startMaximized=true;
         Configuration.timeout = 15000;
-       // Configuration.browser= ConfigurationReader.get("browser");
-      Configuration.holdBrowserOpen=true;
+        Configuration.browser= ConfigurationReader.get("browser");
+      Configuration.holdBrowserOpen=false;
 
         Configuration.pollingInterval = 500; // set the polling interval to half second
       //  WebDriverRunner.driver().getWebDriver().manage().timeouts().implicitlyWait(15,TimeUnit.SECONDS);
-
+        Configuration.browserCapabilities.setCapability("profile.default_content_setting_values", "popups=0");
+        Configuration.browserCapabilities.setCapability("profile.default_content_settings.popups", 0);
     }
 
     @After

@@ -1,13 +1,14 @@
 package com.backmarket.step_definitions;
 import com.backmarket.pages.MainPage;
 import com.backmarket.pages.SearchPage;
+import com.backmarket.pages.SwappaMainPage;
 import com.backmarket.utlities.ConfigurationReader;
-import com.codeborne.selenide.Condition;
-import com.codeborne.selenide.ElementsCollection;
+import com.codeborne.selenide.*;
 import io.cucumber.java.en.*;
 import java.util.*;
-import com.codeborne.selenide.Selenide;
-import com.codeborne.selenide.SelenideElement;
+
+import org.openqa.selenium.support.ui.Select;
+
 import java.util.ArrayList;
 import java.util.List;
 import static com.codeborne.selenide.Condition.*;
@@ -36,10 +37,10 @@ String model1;
 
     }
 
-
+String model;
     @When("User click model checkboxes {string}")
     public void user_click_model_checkboxes(String string) {
-
+model=string;
         searchPage.modelCheckBox(string).hover().click();
     }
 
@@ -54,35 +55,35 @@ String model1;
         }
     }
     String url;
-
+String storage;
     @When("User click storage check box {string}")
     public void user_click_storage_check_box(String string) {
+        storage=string;
         if(searchPage.filterStorage.isDisplayed()){
             searchPage.filterStorage.hover().sendKeys(string);
             searchPage.storageCheckBox(string).shouldBe(visible).hover().click();
         }else {
-            System.out.println("searchPage.storageCheckBox(string).isDisplayed() = " + searchPage.storageCheckBox(string).isDisplayed());
+            //System.out.println("searchPage.storageCheckBox(string).isDisplayed() = " + searchPage.storageCheckBox(string).isDisplayed());
             searchPage.storageCheckBox(string).hover().click();
-            searchPage.unlockedPhoneList.get(0).shouldBe(exist);
+            //searchPage.unlockedPhoneList.get(0).shouldBe(exist);
             url = Selenide.webdriver().driver().url();
         }
 
     }
 
-
-    @When("User inconsistent prices according to condition")
-    public void user_eliminates_inconsistent_prices_according_to_condition() throws InterruptedException {
+String carrier;
+    @When("User inconsistent prices according to condition {string}")
+    public void user_eliminates_inconsistent_prices_according_to_condition(String carrier) throws InterruptedException {
+        this.carrier=carrier;
         Thread.sleep(500);
-
-
         List<Double> fairPriceList = new ArrayList<>();
         List<Double> goodPriceList = new ArrayList<>();
         List<Double> excellentPriceList = new ArrayList<>();
         Thread.sleep(500);
-        List<SelenideElement> newUnlocked = searchPage.unlockedPhoneList;
+        List<SelenideElement> newUnlocked = searchPage.phoneListCarrier(carrier);
         //System.out.println("newUnlocked.size() = " + newUnlocked.size());
         for (int i = 0; i < newUnlocked.size(); i++) {
-            newUnlocked = searchPage.unlockedPhoneList;
+            newUnlocked = searchPage.phoneListCarrier(carrier);
             newUnlocked.get(i).shouldBe(visible, enabled, exist);
             newUnlocked.get(i).hover();
             newUnlocked.get(i).click();
@@ -92,6 +93,7 @@ String model1;
             Double excellent;
             if (searchPage.conditionsPrice.size() == 3) {
                 Double prices[] = {Double.parseDouble(searchPage.conditionsPrice.get(2).getText().replace(",", "").substring(1)), Double.parseDouble(searchPage.conditionsPrice.get(0).getText().replace(",", "").substring(1)), Double.parseDouble(searchPage.conditionsPrice.get(1).getText().replace(",", "").substring(1))};
+                Thread.sleep(500);
                 Arrays.sort(prices);
                 fair = prices[0];
                 good = prices[1];
@@ -105,6 +107,7 @@ String model1;
 
                 Double prices[] = {Double.parseDouble(searchPage.conditionsPrice.get(0).getText().replace(",", "").substring(1)), Double.parseDouble(searchPage.conditionsPrice.get(1).getText().replace(",", "").substring(1))};
                 Arrays.sort(prices);
+                Thread.sleep(500);
                 fair = prices[0];
                 good = prices[1];
                 fairPriceList.add(fair);
@@ -112,6 +115,7 @@ String model1;
             } else if (searchPage.conditionsPrice.size() == 2 && (searchPage.coditionsName.get(0).getText().contains("Fair") && searchPage.coditionsName.get(1).getText().contains("Excellent"))){
                 Double prices[] = {Double.parseDouble(searchPage.conditionsPrice.get(0).getText().replace(",", "").substring(1)), Double.parseDouble(searchPage.conditionsPrice.get(1).getText().replace(",", "").substring(1))};
                 Arrays.sort(prices);
+                Thread.sleep(500);
                 fair = prices[0];
                 excellent = prices[1];
                 fairPriceList.add(fair);
@@ -119,6 +123,7 @@ String model1;
             } else if (searchPage.conditionsPrice.size() == 2 && (searchPage.coditionsName.get(0).getText().contains("Good") && searchPage.coditionsName.get(1).getText().contains("Excellent"))) {
                 Double prices[] = {Double.parseDouble(searchPage.conditionsPrice.get(0).getText().replace(",", "").substring(1)), Double.parseDouble(searchPage.conditionsPrice.get(1).getText().replace(",", "").replace(",", "").substring(1))};
                 Arrays.sort(prices);
+                Thread.sleep(500);
                 good = prices[0];
                 excellent = prices[1];
                 goodPriceList.add(good);
@@ -334,4 +339,19 @@ String model1;
         System.out.println("The cheapest good " + Collections.min(goodPriceList));
         System.out.println("The cheapest excellent " + Collections.min(excellentPriceList));
     }
+    @When("User navigates swappa")
+    public void user_navigates_swappa() {
+        open("https://swappa.com/");
+
+    }
+    @When("User searches mobile phone")
+    public void user_searches() {
+        new SwappaMainPage().searchButton.click();
+        new SwappaMainPage().searchBox.shouldBe(appear).sendKeys(model);
+        new SwappaMainPage().firstPhoneInSearch.get(0).click();
+        new SwappaMainPage().carrierClick("unlocked").click();
+        new Select(new SwappaMainPage().selectStorage).selectByValue(storage);
+
+    }
+
 }
