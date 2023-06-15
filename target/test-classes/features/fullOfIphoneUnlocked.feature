@@ -1,5 +1,5 @@
 Feature: Search cheapest all iphone 11 models
-@wip2
+
   Scenario Outline: iphone 11
     Given User is on search page
     When User enters Iphone model with storage "<model>"
@@ -9,28 +9,31 @@ Feature: Search cheapest all iphone 11 models
     And User inconsistent prices according to condition "Unlocked"
 #Unlocked,AT&T.T-Mobile, Verizon
     Examples:
-      | model                             | model1            | storage |
-      | iphone 11 64 gb unlocked          | iPhone 11         | 64 GB   |
-      | iphone 11 128 gb unlocked         | iPhone 11         | 128 GB  |
-      | iphone 11 256 gb unlocked         | iPhone 11         | 256 GB  |
-      | iphone 11 Pro 64 gb unlocked      | iPhone 11 Pro     | 64 GB   |
-      | iphone 11 Pro 256 gb unlocked     | iPhone 11 Pro     | 256 GB  |
-      | iphone 11 Pro 512 gb unlocked     | iPhone 11 Pro     | 512 GB  |
-      | iphone 11 Pro Max 64 gb unlocked  | iPhone 11 Pro Max | 64 GB   |
-      | iphone 11 Pro Max 256 gb unlocked | iPhone 11 Pro Max | 256 GB  |
-      | iphone 11 Pro Max 512 gb unlocked | iPhone 11 Pro Max | 512 GB  |
-      | iphone 12 64 gb unlocked          | iPhone 12         | 64 GB   |
-      | iphone 12 128 gb unlocked         | iPhone 12         | 128 GB  |
-      | iphone 12 256 gb unlocked         | iPhone 12         | 256 GB  |
-      | iphone 12 mini 64 gb unlocked     | iPhone 12 Mini    | 64 GB   |
-      | iphone 12 mini 128 gb unlocked    | iPhone 12 Mini    | 128 GB  |
-      | iphone 12 mini 256 gb unlocked    | iPhone 12 Mini    | 256 GB  |
-      | iphone 12 Pro 128 gb unlocked     | iPhone 12 Pro     | 128 GB  |
-      | iphone 12 Pro 256 gb unlocked     | iPhone 12 Pro     | 256 GB  |
-      | iphone 12 Pro 512 gb unlocked     | iPhone 12 Pro     | 512 GB  |
-      | iphone 12 Pro Max 128 gb unlocked | iPhone 12 Pro Max | 128 GB  |
-      | iphone 12 Pro Max 256 gb unlocked | iPhone 12 Pro Max | 256 GB  |
-      | iphone 12 Pro Max 512 gb unlocked | iPhone 12 Pro Max | 512 GB  |
+      | model                              | model1            | storage |
+      | iphone XR 64 gb unlocked           | iPhone XR         | 64 GB   |
+      | iphone XR 128 gb unlocked          | iPhone XR         | 128 GB  |
+      | iphone XR 256 gb unlocked          | iPhone XR         | 256 GB  |
+      | iphone 11 64 gb unlocked           | iPhone 11         | 64 GB   |
+      | iphone 11 128 gb unlocked          | iPhone 11         | 128 GB  |
+      | iphone 11 256 gb unlocked          | iPhone 11         | 256 GB  |
+      | iphone 11 Pro 64 gb unlocked       | iPhone 11 Pro     | 64 GB   |
+      | iphone 11 Pro 256 gb unlocked      | iPhone 11 Pro     | 256 GB  |
+      | iphone 11 Pro 512 gb unlocked      | iPhone 11 Pro     | 512 GB  |
+      | iphone 11 Pro Max 64 gb unlocked   | iPhone 11 Pro Max | 64 GB   |
+      | iphone 11 Pro Max 256 gb unlocked  | iPhone 11 Pro Max | 256 GB  |
+      | iphone 11 Pro Max 512 gb unlocked  | iPhone 11 Pro Max | 512 GB  |
+      | iphone 12 64 gb unlocked           | iPhone 12         | 64 GB   |
+      | iphone 12 128 gb unlocked          | iPhone 12         | 128 GB  |
+      | iphone 12 256 gb unlocked          | iPhone 12         | 256 GB  |
+      | iphone 12 mini 64 gb unlocked      | iPhone 12 Mini    | 64 GB   |
+      | iphone 12 mini 128 gb unlocked     | iPhone 12 Mini    | 128 GB  |
+      | iphone 12 mini 256 gb unlocked     | iPhone 12 Mini    | 256 GB  |
+      | iphone 12 Pro 128 gb unlocked      | iPhone 12 Pro     | 128 GB  |
+      | iphone 12 Pro 256 gb unlocked      | iPhone 12 Pro     | 256 GB  |
+      | iphone 12 Pro 512 gb unlocked      | iPhone 12 Pro     | 512 GB  |
+      | iphone 12 Pro Max 128 gb unlocked  | iPhone 12 Pro Max | 128 GB  |
+      | iphone 12 Pro Max 256 gb unlocked  | iPhone 12 Pro Max | 256 GB  |
+      | iphone 12 Pro Max 512 gb unlocked  | iPhone 12 Pro Max | 512 GB  |
       | iphone 13 128 gb unlocked          | iPhone 13         | 128 GB  |
       | iphone 13 256 gb unlocked          | iPhone 13         | 256 GB  |
       | iphone 13 512 gb unlocked          | iPhone 13         | 512 GB  |
@@ -56,6 +59,3 @@ Feature: Search cheapest all iphone 11 models
       | iphone 14 Pro Max 256 gb unlocked  | iPhone 14 Pro Max | 256 GB  |
       | iphone 14 Pro Max 512 gb unlocked  | iPhone 14 Pro Max | 512 GB  |
       | iphone 14 Pro Max 1024 gb unlocked | iPhone 14 Pro Max | 1024 GB |
-      | iphone XR 64 gb unlocked          | iPhone XR         | 64 GB   |
-      | iphone XR 128 gb unlocked         | iPhone XR         | 128 GB  |
-      | iphone XR 256 gb unlocked         | iPhone XR         | 256 GB  |
