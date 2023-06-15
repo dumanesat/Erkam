@@ -37,6 +37,9 @@ Feature: Search cheapest all iphone 11 models
       | iphone 13 128 gb T-Mobile          | iPhone 13         | 128 GB  |
       | iphone 13 256 gb T-Mobile          | iPhone 13         | 256 GB  |
       | iphone 13 512 gb T-Mobile          | iPhone 13         | 512 GB  |
+      | iphone 13 mini 128 gb T-Mobile          | iPhone 13 mini       | 128 GB  |
+      | iphone 13 mini 256 gb T-Mobile         | iPhone 13 mini        | 256 GB  |
+      | iphone 13 mini 512 gb T-Mobile          | iPhone 13 mini         | 512 GB  |
       | iphone 13 Pro 128 gb T-Mobile      | iPhone 13 Pro     | 128 GB  |
       | iphone 13 Pro 256 gb T-Mobile      | iPhone 13 Pro     | 256 GB  |
       | iphone 13 Pro 512 gb T-Mobile      | iPhone 13 Pro     | 512 GB  |
