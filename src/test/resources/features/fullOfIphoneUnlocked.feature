@@ -8,7 +8,7 @@ Feature: Search cheapest all iphone 11 models
     And User click storage check box "<storage>"
     And User inconsistent prices according to condition "Unlocked"
 #Unlocked,AT&T.T-Mobile, Verizon
-        Examples:
+    Examples:
       | model                              | model1            | storage |
       | iphone 6 16 gb Unlocked            | iPhone 6          | 16  GB  |
       | iphone 6 64 gb Unlocked            | iPhone 6          | 64  GB  |
@@ -35,8 +35,14 @@ Feature: Search cheapest all iphone 11 models
       | iphone 8 256 gb Unlocked           | iPhone 8          | 256 GB  |
       | iphone 8 Plus 64  gb Unlocked      | iPhone 8 Plus     | 64  GB  |
       | iphone 8 PLus 256 gb Unlocked      | iPhone 8 Plus     | 256 GB  |
-      | iphone X 64 gb Unlocked            | iPhone 8          | 64  GB  |
-      | iphone X 256 gb Unlocked           | iPhone 8          | 256 GB  |
+      | iphone X 64 gb Unlocked            | iPhone X          | 64  GB  |
+      | iphone X 256 gb Unlocked           | iPhone X          | 256 GB  |
+      | iPhone XS 64 gb unlocked           | iPhone XS         | 64 GB   |
+      | iPhone XS 256 gb unlocked          | iPhone XS         | 256 GB  |
+      | iPhone XS 512 gb unlocked          | iPhone XS         | 512 GB  |
+      | iPhone XS Max 64 gb unlocked       | iPhone XS Max     | 64 GB   |
+      | iPhone XS Max 256 gb unlocked      | iPhone XS Max     | 256 GB  |
+      | iPhone XS Max 512 gb unlocked      | iPhone XS Max     | 512 GB  |
       | iphone XR 64 gb unlocked           | iPhone XR         | 64 GB   |
       | iphone XR 128 gb unlocked          | iPhone XR         | 128 GB  |
       | iphone XR 256 gb unlocked          | iPhone XR         | 256 GB  |
@@ -78,12 +84,13 @@ Feature: Search cheapest all iphone 11 models
       | iphone 14 128 gb unlocked          | iPhone 14         | 128 GB  |
       | iphone 14 256 gb unlocked          | iPhone 14         | 256 GB  |
       | iphone 14 512 gb unlocked          | iPhone 14         | 512 GB  |
-      | iphone 14 plus 128 gb unlocked     | iPhone 14 Plus    | 128 GB  |
-      | iphone 14 Plus 256 gb unlocked     | iPhone 14 Plus    | 256 GB  |
-      | iphone 14 Plus 512 gb unlocked     | iPhone 14 Plus    | 512 GB  |
+
       | iphone 14 Pro 128 gb unlocked      | iPhone 14 Pro     | 128 GB  |
       | iphone 14 Pro 256 gb unlocked      | iPhone 14 Pro     | 256 GB  |
       | iphone 14 Pro 512 gb unlocked      | iPhone 14 Pro     | 512 GB  |
+      | iphone 14 plus 128 gb unlocked     | iPhone 14 Plus    | 128 GB  |
+      | iphone 14 Plus 256 gb unlocked     | iPhone 14 Plus    | 256 GB  |
+      | iphone 14 Plus 512 gb unlocked     | iPhone 14 Plus    | 512 GB  |
       | iphone 14 Pro 1024 gb unlocked     | iPhone 14 Pro     | 1024 GB |
       | iphone 14 Pro Max 128 gb unlocked  | iPhone 14 Pro Max | 128 GB  |
       | iphone 14 Pro Max 256 gb unlocked  | iPhone 14 Pro Max | 256 GB  |
